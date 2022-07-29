@@ -1,7 +1,7 @@
 import "./JoinBetaSection.scss";
 import gladiaGoddess from "../assets/goddess-400.png";
 import { useCallback, useState } from "react";
-import { useLocation } from "@swan-io/chicane";
+import { useLocation } from "react-router-dom";
 
 type Profile = "unknown" | "developer" | "data-analyst" | "data-scientist";
 
@@ -108,7 +108,7 @@ function useHubspotForm(defaultProfile: Profile) {
   const [formProfile, setFormProfile] = useState(defaultProfile);
   const [formEmail, setFormEmail] = useState("");
   const location = useLocation();
-  const route = location.path.join("/");
+  const route = location.pathname;
   const onJoinClick = useCallback(
     async (event: React.MouseEvent) => {
       event.preventDefault();

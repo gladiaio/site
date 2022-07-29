@@ -1,5 +1,3 @@
-import { Link } from "@swan-io/chicane";
-import { Router } from "../AppRouter";
 import logo from "../assets/logo-black.png";
 
 import "./HeaderSection.scss";
