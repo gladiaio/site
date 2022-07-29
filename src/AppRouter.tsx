@@ -5,12 +5,15 @@ import { DataScientistPage } from "./pages/DataScientist";
 import { DeveloperPage } from "./pages/Developer";
 import { HomePage } from "./pages/Home";
 
-export const Router = createRouter({
-  Home: "/",
-  Developer: "/developer",
-  DataScientist: "/data-analyst",
-  DataAnalyst: "/data-scientist",
-});
+export const Router = createRouter(
+  {
+    Home: "/",
+    Developer: "/developer",
+    DataScientist: "/data-analyst",
+    DataAnalyst: "/data-scientist",
+  },
+  { basePath: import.meta.env.BASE_URL ?? "" }
+);
 
 export function AppRouter() {
   const route = Router.useRoute([
