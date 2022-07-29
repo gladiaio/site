@@ -1,0 +1,50 @@
+header {
+  background-color: white;
+  .content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem 3rem 2rem 3rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    .logo {
+      max-width: 10rem;
+      img {
+        max-width: 10rem;
+      }
+    }
+    .menu {
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+        display: flex;
+        gap: 1rem;
+        li {
+          a {
+            &,
+            &:hover,
+            &:active,
+            &:visited {
+              box-shadow: inset 0 0 0 0 var(--color--purple);
+              text-decoration: none;
+            }
+            padding: 0.5rem 1rem;
+            font-size: 1.1rem;
+            font-family: "MazzardH";
+          }
+
+          a {
+            color: var(--color--purple);
+            margin: 0 -0.25rem;
+            transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+          }
+          a:hover {
+            box-shadow: inset 100px 0 0 0 var(--color--purple);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

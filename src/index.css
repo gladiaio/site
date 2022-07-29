@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'MazzardH';
+    src: url('./assets/fonts/MazzardH-Regular.otf');
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'MazzardH';
+    src: url('./assets/fonts/MazzardH-Bold.otf');
+    font-style: normal;
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'MazzardH';
+    src: url('./assets/fonts/MazzardH-Black.otf');
+    font-style: normal;
+    font-weight: bolder;
+}
+
+body {
+    margin: 0;
+}

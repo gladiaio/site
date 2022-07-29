@@ -1,0 +1,170 @@
+.join-beta {
+  background: rgb(119, 92, 255);
+  background: radial-gradient(
+    circle,
+    var(--color--purple) 76%,
+    var(--color--pink) 100%
+  );
+  transform: skewY(-5deg);
+  box-shadow: 1px 6px 19px 4px rgba(0, 0, 0, 0.75) inset;
+  -webkit-box-shadow: 1px 6px 19px 4px rgba(0, 0, 0, 0.75) inset;
+  -moz-box-shadow: 1px 6px 19px 4px rgba(0, 0, 0, 0.75) inset;
+  margin: 0 -2rem;
+  padding: 0 3rem;
+
+  .content {
+    transform: skewY(5deg);
+    min-height: 30rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    h1 {
+      z-index: 100;
+      font-family: "MazzardH";
+      font-size: 5rem;
+      color: white;
+      text-shadow: var(--color--yellow) 5px 5px 0px;
+      letter-spacing: 2px;
+
+      @media screen and (max-device-width: 480px) {
+        font-size: 4rem;
+      }
+    }
+
+    .join-beta-form-container {
+      display: flex;
+      gap: 2rem;
+
+      @media screen and (max-device-width: 500px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      h2 {
+        font-family: "MazzardH";
+        color: white;
+        font-weight: 500;
+        font-size: 24px;
+        white-space: nowrap;
+      }
+      form {
+        z-index: 100;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .profile-selection {
+          color: white;
+          display: flex;
+          gap: 1rem;
+
+          .choices {
+            display: flex;
+            flex-direction: column;
+
+            label {
+              cursor: pointer;
+            }
+
+            input[type="radio"] {
+              appearance: none;
+              border: white 2px solid;
+              border-radius: 100%;
+              width: 1rem;
+              height: 1rem;
+              display: inline-block;
+              position: relative;
+              cursor: pointer;
+              transform: translateY(0.1em);
+              margin-right: 0.25rem;
+
+              &:checked {
+                background-color: var(--color--pink);
+              }
+            }
+          }
+        }
+
+        .email-input {
+          display: flex;
+          align-items: stretch;
+          gap: 1rem;
+
+          input {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+          }
+
+          button {
+            background-color: var(--color--pink);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+
+        @media screen and (max-device-width: 480px) {
+          flex-direction: column;
+          gap: 1;
+          button {
+            margin-top: 0.75rem;
+          }
+        }
+      }
+    }
+
+    .gladia-goddess {
+      z-index: 10;
+      width: fit-content;
+      img {
+        animation: 4s ease-in-out floating-goddess infinite alternate;
+      }
+
+      @media screen and (min-device-width: 1050px) {
+        position: absolute;
+        right: -120px;
+        img {
+          max-width: 400px;
+        }
+      }
+
+      @media screen and (min-device-width: 480px) and (max-device-width: 1050px) {
+        position: absolute;
+        right: -60px;
+        padding-top: 40px;
+        img {
+          max-width: 400px;
+        }
+      }
+
+      @media screen and (max-device-width: 500px) {
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 450px;
+        img {
+          max-width: 350px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes floating-goddess {
+  0% {
+    margin-top: -15px;
+  }
+  100% {
+    margin-top: 15px;
+  }
+}
