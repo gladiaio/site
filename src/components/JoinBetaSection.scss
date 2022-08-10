@@ -111,7 +111,15 @@
             &:hover {
               cursor: pointer;
             }
+            &[disabled] {
+              cursor: default;
+              background-color: rgba(0, 0, 0, 0.05);
+            }
           }
+        }
+
+        .error-message {
+          color: white;
         }
 
         @media screen and (max-device-width: 480px) {
@@ -121,6 +129,13 @@
             margin-top: 0.75rem;
           }
         }
+      }
+
+      &.saved {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
       }
     }
 

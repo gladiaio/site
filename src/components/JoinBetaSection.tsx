@@ -1,6 +1,6 @@
 import "./JoinBetaSection.scss";
 import gladiaGoddess from "../assets/goddess-400.png";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 type Profile = "unknown" | "developer" | "data-analyst" | "data-scientist";
@@ -28,7 +28,27 @@ interface JoinBetaFormProps {
 }
 
 export function JoinBetaForm({ profile }: JoinBetaFormProps) {
-  const { setFormEmail, setFormProfile, onJoinClick } = useHubspotForm(profile);
+  const { formState, setFormEmail, setFormProfile, onJoinClick } =
+    useHubspotForm(profile);
+  const joinButtonText = useMemo(() => {
+    switch (formState) {
+      case "IDLE":
+      case "FAIL":
+        return "Join";
+      case "SAVING":
+        return "Saving...";
+      case "SAVED":
+        return "Saved";
+    }
+  }, [formState]);
+  if (formState === "SAVED") {
+    return (
+      <div className="join-beta-form-container saved">
+        <h3>Welcome aboard! 😃</h3>
+        We will contact you as soon as a place for the beta will be available!
+      </div>
+    );
+  }
   return (
     <div className="join-beta-form-container">
       <h2>Join the beta</h2>
@@ -42,8 +62,18 @@ export function JoinBetaForm({ profile }: JoinBetaFormProps) {
             placeholder="j.doe@example.com"
             onChange={(e) => setFormEmail(e.target.value)}
           />
-          <button onClick={onJoinClick}>Join</button>
+          <button
+            onClick={onJoinClick}
+            disabled={formState !== "IDLE" && formState !== "FAIL"}
+          >
+            {joinButtonText}
+          </button>
         </div>
+        {formState === "FAIL" && (
+          <div className="error-message">
+            Oops! We failed to register you, can you retry? 😰
+          </div>
+        )}
       </form>
     </div>
   );
@@ -104,20 +134,31 @@ const TITLE: Record<Profile, string> = {
   "data-scientist": "Python's new AI revolution",
 };
 
+type FormState = "IDLE" | "SAVING" | "SAVED" | "FAIL";
+
 function useHubspotForm(defaultProfile: Profile) {
   const [formProfile, setFormProfile] = useState(defaultProfile);
   const [formEmail, setFormEmail] = useState("");
+  const [formState, setFormState] = useState<FormState>("IDLE");
   const location = useLocation();
   const route = location.pathname;
   const onJoinClick = useCallback(
     async (event: React.MouseEvent) => {
       event.preventDefault();
       console.log({ formEmail, formProfile, route });
-      await postFormToHubspot(formEmail, formProfile, route);
+      setFormState("SAVING");
+      await postFormToHubspot(formEmail, formProfile, route)
+        .then(() => {
+          setFormState("SAVED");
+        })
+        .catch((err) => {
+          setFormState("FAIL");
+          console.error("error when saving", err);
+        });
     },
     [formProfile, formEmail, route]
   );
-  return { setFormEmail, setFormProfile, onJoinClick } as const;
+  return { formState, setFormEmail, setFormProfile, onJoinClick } as const;
 }
 
 function postFormToHubspot(email: string, profile: Profile, route: string) {
