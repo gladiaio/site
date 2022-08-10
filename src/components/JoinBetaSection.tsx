@@ -127,8 +127,7 @@ function postFormToHubspot(email: string, profile: Profile, route: string) {
   const data = {
     fields: [
       { name: "email", value: email },
-      // TODO uncomment when custom property profile will be defined on HubSpot
-      // { name: "profile", value: profile },
+      { name: "job_function", value: profile },
     ],
     context: { pageUri: "gladia.io", pageName: route },
   };
