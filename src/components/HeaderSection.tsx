@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/logo-black.png";
 
 import "./HeaderSection.scss";
@@ -7,7 +8,9 @@ export function HeaderSection() {
     <header>
       <div className="content">
         <div className="logo">
-          <img src={logo} alt="GladIA" />
+          <Link to="/">
+            <img src={logo} alt="GladIA" />
+          </Link>
         </div>
         <div className="menu">
           <ul>

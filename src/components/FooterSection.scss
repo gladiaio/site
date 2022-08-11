@@ -8,31 +8,38 @@ footer {
     justify-content: space-between;
     align-items: center;
 
+    @media screen and (max-device-width: 500px) {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
     .copyrights {
       padding-left: 1rem;
+      white-space: nowrap;
+    }
+
+    .legal-links {
+      display: flex;
+      flex-direction: column;
+      @media screen and (max-device-width: 500px) {
+        flex-direction: row;
+        gap: 1rem;
+      }
+      a {
+        &,
+        &:hover,
+        &:active,
+        &:visited {
+          text-decoration: none;
+          color: black;
+          cursor: pointer;
+        }
+      }
     }
 
     .social-links {
       display: flex;
       gap: 1rem;
-      a {
-        width: 3rem;
-        height: 3rem;
-        box-shadow: 0 2px 4px -1px #0003, 0 4px 5px #00000024,
-          0 1px 10px #0000001f;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        &:hover {
-          box-shadow: 0 2px 4px -1px #ff4ab1, 0 4px 5px #ff4ab124,
-            0 1px 10px #ff4ab11f;
-        }
-        img {
-          max-width: 1.5rem;
-          max-height: 1.5rem;
-        }
-      }
     }
   }
 }
