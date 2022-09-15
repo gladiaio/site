@@ -8,6 +8,7 @@ import { CguPage } from "./pages/Cgu";
 import { ContactPage } from "./pages/Contact";
 
 export function AppRouter() {
+  console.log('cocou')
   return (
     <HashRouter>
       <Routes>
