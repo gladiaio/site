@@ -14,12 +14,13 @@ export function HeaderSection() {
         </div>
         <div className="menu">
           <ul>
-            {/* <li>
-              <a href="https://gladia.io/jobs">Jobs</a>
-            </li> */}
           </ul>
         </div>
       </div>
     </header>
   );
 }
+
+// {/* <li>
+//   <a href="https://gladia.io/jobs">Jobs</a>
+// </li> */}
