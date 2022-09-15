@@ -15,6 +15,7 @@ export function FooterSection() {
         <div className="legal-links">
           <Link to="/privacy">Privacy</Link>
           <Link to="/cgu">CGU</Link>
+          <Link to="/contact">Contact</Link>
         </div>
         <div className="social-links">
           <SocialBtn
